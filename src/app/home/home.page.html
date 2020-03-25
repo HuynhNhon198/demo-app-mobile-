@@ -1,20 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+<h1>
+  {{star}} <ion-icon name="star"></ion-icon> 
+</h1>
+<ion-list>
+  <ion-item>
+    <ion-label>LỚP</ion-label>
+    <ion-select *ngIf="grades.length > 0" [value]="grade" [(ngModel)]="grade">
+      <ion-select-option *ngFor="let item of grades" [value]="item.grade">{{item.grade}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+<ion-button (click)="start()" expand="block" size="large">BẮT ĐẦU</ion-button>
 </ion-content>

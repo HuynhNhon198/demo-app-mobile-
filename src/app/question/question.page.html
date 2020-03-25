@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title>{{name|uppercase}} - CÂU HỎI {{questionNumber}}</ion-title>
+    <span slot="end" class="star">
+      {{star}} ⭐
+    </span>
+    <ion-buttons slot="end">
+      <ion-button (click)="goHome()">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  <ion-card *ngIf="question">
+    <ion-card-header>
+      <ion-card-title>{{question.question}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="question.type === 'quiz'">
+      <ion-list>
+        <ion-item *ngFor="let i of question.answers; let ind=index" lines='none'  >
+          {{i.answer}}
+          <ion-checkbox [color]="i['checked'] === i.correct? 'success': 'danger'" [disabled]="i['checked'] === false || i['checked'] === true" name='answ' slot="end" [(ngModel)]="i['checked']" (ionChange)='selectAnsw(ind)'></ion-checkbox>
+        </ion-item>
+      </ion-list>
+      <!-- <ul class="answer">
+        <li *ngFor="let i of item.answers">
+          <ion-checkbox></ion-checkbox> &nbsp; {{i.asw}}
+        </li>
+      </ul> -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="left" color="success" shape="fill" (click)="suggest()">
+        XEM GỢI Ý -3 
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="right" color="danger" (click)="goNext()">
+        BỎ QUA -1
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+
